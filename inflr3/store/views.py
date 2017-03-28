@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product
+from .form import AddProduct
 # Create your views here.
 
 
@@ -9,7 +10,7 @@ def home(request):
     context = {
         'products': products
     }
-    
+
     return render(request, template_name, context)
 
 
@@ -33,6 +34,15 @@ def productlist(request):
 
 def addproduct(request):
 
-    template_name = 'store/addproduct.html'
+    template_name ='store/addproduct.html'
 
-    return render(request, template_name)
+    if request.method == "POST":
+        form = AddProduct(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.save()
+            return redirect('store:productlist')
+    else:
+        form = AddProduct()
+    return render(request, template_name,{'form':form})

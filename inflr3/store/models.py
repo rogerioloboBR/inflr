@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.conf import settings
 # Create your models here.
 
 class ProductManager(models.Manager):
@@ -30,3 +30,13 @@ class Product(models.Model):
         verbose_name ='Produto'
         verbose_name_plural='Produtos'
         ordering =['name']
+
+
+class Buy(models.Model):
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL, verbose_name='Usuario',
+        related_name='buy'
+    )
+    product = models.ForeignKey(
+        Product, verbose_name='Produto', related_name='buy'
+    )

@@ -3,24 +3,44 @@
 {% load static %}
 {% block content%}
 <div class="list-products">
-			<form action="">
+			<form action="" method="post">
 				<div class="add-product">
 					<div class="add-product-title">
 						Adicionar Item
 					</div>
-					<div class="add-product-input">
-						<input type="text" placeholder="Nome do item">
-					</div>
-					<div class="add-product-input">
-						<input type="text" placeholder="URL da imagem do item">
-					</div>
-					<div class="add-product-input">
-						<textarea name="" rows="1" placeholder="Descrição do item"></textarea>
-					</div>
+						<form action="" method="post">
+							{% csrf_token %}
+							<fieldset>
+								{{ form.non_field_errors }}
 
-					<div class="add-product-button">
-						<a href="admin.html"> Cadastrar </a>
-					</div>
+									{% for field in form %}
+										<div class="login-input">
+
+											{{ field.label_tag}}
+											{{ field }}
+											{{ field.errors }}
+										</div>
+									{% endfor %}
+							<div class="login-button">
+								 <button type="submit">Cadastrar</button>
+							</div>
+							</fieldset>
+
+						</form>
+
+					<!--<div class="add-product-input">-->
+						<!--<input type="text" placeholder="Nome do item">-->
+					<!--</div>-->
+					<!--<div class="add-product-input">-->
+						<!--<input type="text" placeholder="URL da imagem do item">-->
+					<!--</div>-->
+					<!--<div class="add-product-input">-->
+						<!--<textarea name="" rows="1" placeholder="Descrição do item"></textarea>-->
+					<!--</div>-->
+
+					<!--<div class="add-product-button">-->
+						<!--<a href="admin.html"> Cadastrar </a>-->
+					<!--</div>-->
 				</div>
 			</form>
 		</div>
