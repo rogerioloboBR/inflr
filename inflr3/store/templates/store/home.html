@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+
+{% load static %}
+{% block content%}
+<div class="page-title">
+			Items comprados
+		</div>
+		<div class="items-comprados">
+			<div class="items-comprados-container">
+                    {% for product in products %}
+                        {% if product.bought %}
+                             <div class="items-comprados-container">
+                                <div class="item-each">
+                                    <div class="item-image"></div>
+                                    <div class="item-title">
+                                        {{ product.name }}
+                                    </div>
+                                    <div class="item-description">
+                                        {{ productt.description | linebreaks}}
+                                    </div>
+                                    <div class="item-buy">
+                                        <div class="see-more">
+                                            <a href="{{ product.get_absolute_url }}">Visualizar</a>
+                                        </div>
+
+                                    </div>
+                                </div>
+			                </div>
+                        {% else %}
+
+                        {% endif %}
+                    {% endfor %}
+
+
+
+
+			</div>
+
+			<div class="divider"></div>
+
+			<div class="page-title">
+				Lista de Items
+			</div>
+            {% for product in products %}
+
+                    <div class="items-comprados-container">
+                        <div class="item-each">
+                            <div class="item-image"></div>
+                            <div class="item-title">
+                                {{ product.name }}
+                            </div>
+                            <div class="item-description">
+                                {{ productt.description | linebreaks}}
+                            </div>
+                            <div class="item-buy">
+                                <div class="see-more">
+                                    <a href="{{ product.get_absolute_url }}">Visualizar</a>
+                                </div>
+                                <div>
+                                    <i class="zmdi zmdi-shopping-cart-plus"></i>
+                                    Comprar
+                                </div>
+                            </div>
+                        </div>
+			        </div>
+
+            {% endfor%}
+
+
+		</div>
+{% endblock %}

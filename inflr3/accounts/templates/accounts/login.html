@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> Inflr Test </title>
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+	<link rel="stylesheet" href="{% static 'css/material-design-iconic-font.css'%}">
+	<meta name="author" content="Inflr">
+	<meta name="description" content="Inflr">
+	<meta name="keywords" content="Inflr">
+	<meta name="viewport" content="initial-scale=1">
+</head>
+<body class="">
+
+	<div class="login-container">
+		<div class="login-title">
+			Login
+		</div>
+
+		<form action="" method="post">
+			{% csrf_token %}
+			<fieldset>
+				{{ form.non_field_errors }}
+
+					{% for field in form %}
+						<div class="login-input">
+
+							{{ field.label_tag}}
+							{{ field }}
+							{{ field.errors }}
+						</div>
+					{% endfor %}
+			<div class="login-button">
+				 <button type="submit">Login</button>
+			</div>
+			</fieldset>
+
+		</form>
+		<div class="login-button">
+				<a href="{% url 'accounts:register' %}"> Registrar </a>
+		</div>
+	</div>
+
+</body>
+</html>

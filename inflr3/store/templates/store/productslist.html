@@ -1,0 +1,24 @@
+{% extends "base2.html" %}
+
+{% load static %}
+
+{% block content%}
+<div class="container container-products">
+	<div class="list-products">
+		{% for product in products%}
+				<div class="list-product-each">
+					<div class="list-product-thumbnail"></div>
+					<div class="list-product-title">
+						{{ product.name }}
+					</div>
+					<div class="list-product-delete">
+						Excluir <i class="zmdi zmdi-close"></i>
+					</div>
+					<div class="list-product-bought">
+						{{user.name}}
+					</div>
+				</div>
+		{% endfor%}
+	</div>
+</div>
+{% endblock%}

@@ -1,0 +1,29 @@
+{% extends "base2.html" %}
+
+{% load static %}
+{% block content%}
+<div class="list-products">
+	<form action="" method="post">
+			{% csrf_token %}
+			<fieldset>
+				{{ form.non_field_errors }}
+
+					{% for field in form %}
+						<div class="login-input">
+
+							{{ field.label_tag}}
+							{{ field }}
+							{{ field.errors }}
+						</div>
+					{% endfor %}
+			<div class="login-button">
+				 <button type="submit">Cadastre-se</button>
+			</div>
+			</fieldset>
+
+		</form>
+
+
+
+		</div>
+{% endblock%}

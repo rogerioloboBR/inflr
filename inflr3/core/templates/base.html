@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{%load static%}
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title> Inflr Test </title>
+	<link rel="stylesheet" href="{% static 'css/style.css'%}">
+	<link rel="stylesheet" href="{% static 'css/material-design-iconic-font.css'%}">
+	<meta name="author" content="Inflr">
+	<meta name="description" content="Inflr">
+	<meta name="keywords" content="Inflr">
+	<meta name="viewport" content="initial-scale=1">
+</head>
+<body class="">
+
+	<header class="header-wrapper">
+		<div class="header-logo">
+            <a href="{% url 'store:home'%}">
+                <img src="{% static 'img/logo.png'%}" alt="">
+            </a>
+
+		</div>
+		<div class="header-links">
+			<div>Usuário: {{user.username}}</div>
+			<div> <a href="{% url 'accounts:login'%}"> Login </a> </div>
+			<div> <a href="{% url 'store:home'%}"> Items </a> </div>
+
+
+		</div>
+	</header>
+
+	<div class="container">
+		{% block content %}
+
+        {% endblock %}
+	</div>
+
+</body>
+</html>
